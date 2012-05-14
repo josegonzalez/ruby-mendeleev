@@ -1,0 +1,11 @@
+---
+  title:       "<%= data['title'] %>"
+  date:        <%= Time.now.strftime('%Y-%m-%d %H:%M') %>
+  description:
+  category:    true
+  tags:
+  comments:    <%= data['comments'].to_s %>
+  sharing:     <%= data['sharing'].to_s %>
+  published:   true
+  layout:      post
+---

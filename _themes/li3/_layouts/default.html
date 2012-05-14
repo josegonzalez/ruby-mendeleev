@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>{{ page.title }}</title>
+  <meta name="author" content="{{ site.author }}" />
+  <link rel="author" href="{{ site.url }}{{ site.baseurl }}humans.txt" />
+  {% if site.feedburner_name %}
+    <link href="http://feeds.feedburner.com/{{ site.feedburner_name }}" rel="alternate" title="{{ page.title }}" type="application/atom+xml">
+  {% else %}
+    <link href="{{ site.url }}{{ site.baseurl }}atom.xml" rel="alternate" title="{{ site.title }}" type="application/atom+xml" />
+  {% endif %}
+
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}stylesheets/syntax.css" type="text/css" />
+
+  <!-- Homepage CSS -->
+  <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}stylesheets/screen.css" type="text/css" media="screen, projection" />
+
+  {% if site.ga_tracking_id %}
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{{ site.ga_tracking_id }}']);
+      _gaq.push(['_trackPageview']);
+    </script>
+  {% endif %}
+
+</head>
+<body>
+
+  <div class="site">
+    <div class="title">
+      <a href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a>
+      <a class="extra" href="{{ site.url }}{{ site.baseurl }}">The Lithium Library Index</a>
+    </div>
+    {{ content }}
+    <div class="footer">
+      <div class="contact">
+        <p>
+          {% if site.github_user and site.github_repo %}
+            <a href="http://github.com/{{ site.github_user }}/{{ site.github_repo }}">github.com/{{ site.github_user }}/{{ site.github_repo }}</a>
+            <br />
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {% if site.github_user and site.github_repo and site.github_forkme %}
+  <a href="http://github.com/{{ site.github_user }}/{{ site.github_repo }}">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+  </a>
+  {% endif %}
+
+  <script type="text/javascript">{% if site.comments and page.comments %}
+    var disqus_shortname  = '{{ site.disqus_shortname }}';
+    var disqus_identifier = '{{ page.url }}';
+    var disqus_url        = '{{ site.url }}{{ page.url }}';
+    var disqus_title      = '{{ page.title }}';
+    {% if site.test_url %}var disqus_developer  = location.origin == '{{ site.test_url }}' ? 1 : 0;{% endif %}
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + '{{ site.disqus_shortname }}' + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  {% endif %}{% if site.ga_tracking_id %}
+    <!-- Google Analytics -->
+    (function() {
+      var ga = document.createElement('script');     ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    <!-- Google Analytics end -->
+  {% endif %}</script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+---
+layout: default
+title: Home
+---
+
+<div id="home">
+  <h1>Packages</h1>
+  <ul class="packages">
+    {% for package in site.packages %}
+      <li>
+        <a href="{{ package.url }}">{{ package.title }}</a>
+        {% if package.description %}<p>{{ package.description }}</p>{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
